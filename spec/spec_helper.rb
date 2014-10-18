@@ -1,6 +1,7 @@
-require "lib/simple_conway"
-require 'rack/test'
+require "benchmark"
+require "rack/test"
 require "sinatra"
+require "lib/simple_conway"
 require "app"
 
 module MockApplication
@@ -10,4 +11,5 @@ end
 RSpec.configure do |config|
   config.include Rack::Test::Methods
   config.include MockApplication
+  config.filter_run_excluding performance: true
 end

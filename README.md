@@ -32,6 +32,10 @@ Inside the project directory, run
 ```
 rspec spec
 ```
+Note that default option excludes [performance test of API](spec/api_spec.rb#L29-L34) and [performance test of algorithm](spec/simple_conway_spec.rb#L27-L36), to run performance test:
+```
+rspec --tag performance spec
+```
 
 
 
