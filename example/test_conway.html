@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+function getNextGeneration() {
+            var liveCells = [[2,1],[2,2],[2,3]];
+            var data = {
+                'M': 5,
+                'N': 5,
+                'liveCells' : liveCells
+            };
+
+            $.ajax({
+                url: 'http://simple-conway.herokuapp.com/next_generation',
+                jsonp: 'callback',
+                dataType: 'jsonp',
+                data: data,
+                success: function(response) {
+                    document.getElementById("demo").innerHTML = response;
+                },
+                error: function(XHR, status, error) {console.log(error);}
+            });
+        }
+</script>
+</head>
+
+<body>
+<p>Initial generation is: [2,1],[2,2],[2,3]</p>
+<p>When you click "Get next generation", a function will be called.</p>
+<p>The function will display a message.</p>
+
+<button onclick="getNextGeneration()">Get next generation</button>
+
+<p id="demo"></p>
+
+</body>
+</html>
