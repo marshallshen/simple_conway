@@ -27,11 +27,11 @@ describe SimpleConway do
   it "large-scale grid: algorithm scales with board size", performance: true do
     x, y = 10_000, 10_000
     ten_live_cells = Array.new.tap{|cells| 10.times {cells << [rand(x), rand(y)]}}
-    hundred_live_cells = Array.new.tap{|cells| 10.times {cells << [rand(x), rand(y)]}}
+    hundred_live_cells = Array.new.tap{|cells| 100.times {cells << [rand(x), rand(y)]}}
 
     time_of_ten = Benchmark.realtime{SimpleConway.next_generation(x, y, ten_live_cells)}
     time_of_hundred = Benchmark.realtime{SimpleConway.next_generation(x, y, hundred_live_cells)}
 
-    expect(time_of_hundred).to be <= (10 * time_of_ten)
+    expect(time_of_hundred).to be <= (100 * time_of_ten)
   end
 end
